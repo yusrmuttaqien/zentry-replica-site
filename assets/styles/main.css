@@ -39,13 +39,8 @@
   --color-yellow-300: #edff66;
 }
 
-@layer components {
-  .card {
-    background-color: var(--color-white);
-    border-radius: var(--rounded-lg);
-    padding: var(--spacing-6);
-    box-shadow: var(--shadow-xl);
-  }
+@utility border-hsla {
+  @apply border border-white/20;
 }
 
 @utility special-font {
@@ -97,11 +92,11 @@
   will-change: opacity, transform;
 }
 
-@utility bento-tilt_1 {
-  @apply relative col-span-2 overflow-hidden rounded-md border border-white/20 transition-transform duration-300 ease-out;
+@utility bento-tilt-1 {
+  @apply border-hsla relative col-span-2 overflow-hidden rounded-md border border-white/20 transition-transform duration-300 ease-out;
 }
 
-@utility bento-tilt_2 {
+@utility bento-tilt-2 {
   @apply relative col-span-1 row-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out;
 }
 
@@ -110,7 +105,7 @@
 }
 
 @utility story-img-container {
-  @apply relative h-[90vh] w-full md:h-dvh;
+  @apply relative aspect-auto h-[90vh] w-full md:aspect-video md:h-auto;
   filter: url("#flt_tag");
 }
 

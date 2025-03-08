@@ -4,5 +4,8 @@
   <main class="relative">
     <SectionIndexHero />
     <SectionIndexAbout />
+    <SectionIndexFeatures />
+    <SectionIndexStory />
+    <SectionIndexContact />
   </main>
 </template>

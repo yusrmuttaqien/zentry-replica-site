@@ -41,7 +41,7 @@ function handleScroll(progress: number, direction: "up" | "down") {
   gsapTo = gsap.to(container.value, {
     y: isNavVisible.value ? 0 : -100,
     opacity: isNavVisible.value ? 1 : 0,
-    duration: 0.1,
+    duration: 0.01,
   });
 }
 

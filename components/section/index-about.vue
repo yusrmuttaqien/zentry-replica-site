@@ -17,7 +17,7 @@ function timeline() {
   });
 
   const to = clipTimeline.to(".mask-clip-path", {
-    width: "100vw",
+    width: "100%",
     height: "100vh",
     borderRadius: 0,
   });
@@ -27,7 +27,9 @@ function timeline() {
 
 onMounted(() => {
   gsap.registerPlugin(ScrollTrigger);
-  timeline();
+
+  let tlControl = timeline();
+  let timeout: NodeJS.Timeout;
 
   window.addEventListener(
     "resize",
@@ -35,13 +37,21 @@ onMounted(() => {
       const target = document.getElementById("clip");
 
       if (!target) return;
-      target.children[0].removeAttribute("style");
-      ScrollTrigger.refresh();
+      clearTimeout(timeout);
+
+      timeout = setTimeout(() => {
+        tlControl.timeline.revert();
+        tlControl.timeline.kill();
+        target.children[0].removeAttribute("style");
+
+        tlControl = timeline();
+
+        ScrollTrigger.refresh(true);
+      }, 10);
     },
     { signal: controller.signal },
   );
 });
-
 onBeforeUnmount(() => {
   controller.abort();
 });
@@ -54,6 +64,7 @@ onBeforeUnmount(() => {
         Welcome to Zentry
       </h2>
       <FragmentAnimatedTitle
+        class="text-black"
         title="Disc<span_class='special-font'>o</span>ver the world's <br /> largest shared <span_class='special-font'>a</span>dventure"
       />
       <div class="about-subtext">

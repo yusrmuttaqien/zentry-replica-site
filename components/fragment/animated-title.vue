@@ -32,7 +32,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h3 class="font-zentry animated-title text-black" ref="container">
+  <h3 class="font-zentry animated-title" ref="container">
     <span
       :key="line"
       v-for="line in lines"
